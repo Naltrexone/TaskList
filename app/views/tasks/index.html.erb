@@ -1,0 +1,21 @@
+<h2>Things I have to do: </h2>
+
+<p>Below are some tasks I have to get done.  Click on the name for more details.</p>
+
+
+<ol class="task_list">
+  <% @tasks.order(:id).each do |task| %>
+    <li class="<%= task.complete ? 'complete' : 'incomplete' %>">
+      <h4><%= link_to("#{task.name}", task_path(task))%></h4>
+
+      <% if task.complete %>
+      <%= link_to("Mark as INCOMPLETE", complete_task_path(task), method: :patch)%>
+      <% else %>
+      <%= link_to("Mark as COMPLETE", complete_task_path(task), method: :patch)%>
+      <% end %>
+
+      <%= link_to("Edit", edit_task_path(task)) %>
+      <%= link_to("Delete", task_path(task), method: :delete, data: { confirm: "Are you sure you want to delete this item from your to-do list?"}) %>
+    </li>
+  <% end %>
+</ol>

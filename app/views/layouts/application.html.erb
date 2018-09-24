@@ -3,13 +3,42 @@
   <head>
     <title>TaskList</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&subset=cyrillic" rel="stylesheet">
   </head>
 
   <body>
-    <%= yield %>
+
+    <header>
+      <h1>Task List</h1>
+    </header>
+
+
+
+    <main>
+      <nav>
+        <ul>
+          <li>
+            <%= link_to("View all Tasks", tasks_path) %>
+          </li>
+          <li>
+            <%= link_to("New Task", new_task_path) %>
+          </li>
+          <li>
+            <%= link_to("Past-Due Tasks", overdue_tasks_path) %>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <%= yield %>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; Divya 2018</p>
+    </footer>
+
   </body>
 </html>

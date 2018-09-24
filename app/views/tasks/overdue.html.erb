@@ -1,0 +1,23 @@
+<h2>OVERDUE TASKS:</h2>
+
+<p>The following are overdue tasks.</p>
+
+
+<ol class="overdue_tasks">
+  <% @overdue.each do |task| %>
+    <li class="<%= task.complete ? 'complete' : 'incomplete' %>">
+      <h4><%= link_to("#{task.name}", task_path(task))%></h4>
+      <h5>Due on: <%= "#{task.due_date.month}/#{task.due_date.day}" %></h5>
+      <h5><%= (Date.today - task.due_date).to_i %> days overdue!</h5>
+
+      <% if task.complete %>
+      <%= link_to("Mark as INCOMPLETE", complete_task_path(task), method: :patch)%>
+      <% else %>
+      <%= link_to("Mark as COMPLETE", complete_task_path(task), method: :patch)%>
+      <% end %>
+
+      <%= link_to("Edit", edit_task_path(task)) %>
+      <%= link_to("Delete", task_path(task), method: :delete, data: { confirm: "Are you sure you want to delete this item from your to-do list?"}) %>
+    </li>
+  <% end %>
+</ol>

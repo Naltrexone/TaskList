@@ -1,0 +1,29 @@
+<div class="details">
+  <h2>Task Details: </h2>
+
+  <ul>
+    <li>
+      <strong>Name:</strong> <%= @task.name %>
+    </li>
+    <li>
+      <strong>Details:</strong>  <%= @task.description %>
+    </li>
+    <% if @task.due_date %>
+    <li>
+      <strong>Due on:</strong>  <%= "#{@task.due_date.month}/#{@task.due_date.day}" %>
+    </li>
+    <% end %>
+
+    <% if @task.complete %>
+    <li>
+      <strong>Completed On:</strong> <%= "#{@task.completion_date.month}/#{@task.completion_date.day}" %>
+    </li>
+    <% elsif @task.due_date && Date.today > @task.due_date %>
+    <li>
+      <strong><%= (Date.today - @task.due_date).to_i %> days overdue!</strong>
+    </li>
+    <% end %>
+
+
+  </ul>
+</div>

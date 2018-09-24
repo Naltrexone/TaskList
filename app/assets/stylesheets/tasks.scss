@@ -1,0 +1,73 @@
+// Place all the styles related to the tasks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+h2 {
+  text-align: center;
+  text-decoration: underline;
+  margin: 0;
+}
+
+ol li h4 {
+  margin-bottom: 0;
+}
+
+ol li h5 {
+  margin: 0;
+}
+
+ol li>a {
+  color: darkblue;
+  text-decoration: none;
+  font-size: .75em;
+  border-left: .5px solid;
+  padding: 0 .5vw;
+}
+
+ol li a:hover {
+  background-color: lightblue;
+  font-weight: bold;
+}
+
+.overdue_tasks h5 {
+  color: red;
+}
+
+section ol li h4 a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.15em;
+}
+
+section .task_list .complete h4 a {
+  text-decoration: line-through;
+  color: red;
+}
+
+
+section .details ul {
+  list-style-type: none;
+}
+
+section form {
+  margin-left: 3vw;
+}
+
+
+section form input {
+  display: block;
+}
+
+section form label {
+  display: block;
+  margin-top: 3vh;
+}
+
+section form input:last-of-type {
+  margin: 5vh;
+  background-color: lightblue;
+  font-weight: bold;
+  margin-left: 40%;
+  font-size: 1.5em;
+}
