@@ -3,7 +3,7 @@
 <p>Below are some tasks I have to get done.  Click on the name for more details.</p>
 
 
-<!-- <ol class="task_list">
+<ol class="task_list">
   <% @tasks.order(:id).each do |task| %>
     <li class="<%= task.complete ? 'complete' : 'incomplete' %>">
       <h4><%= link_to("#{task.name}", task_path(task))%></h4>
@@ -18,4 +18,4 @@
       <%= link_to("Delete", task_path(task), method: :delete, data: { confirm: "Are you sure you want to delete this item from your to-do list?"}) %>
     </li>
   <% end %>
-</ol> -->
+</ol>
