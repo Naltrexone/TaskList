@@ -10,10 +10,10 @@
       <h5>Due on: <%= "#{task.due_date.month}/#{task.due_date.day}" %></h5>
       <h5><%= (Date.today - task.due_date).to_i %> days overdue!</h5>
 
-      <% if task.complete %>
-      <%= link_to("Mark as INCOMPLETE", complete_task_path(task), method: :patch)%>
+      <% if !task.completion_date %>
+        <%= link_to 'Mark Complete', mark_complete_path(task.id), method: :patch %>
       <% else %>
-      <%= link_to("Mark as COMPLETE", complete_task_path(task), method: :patch)%>
+        <%= link_to 'Undo Mark Complete', undo_mark_complete_path(task.id), method: :patch %>
       <% end %>
 
       <%= link_to("Edit", edit_task_path(task)) %>

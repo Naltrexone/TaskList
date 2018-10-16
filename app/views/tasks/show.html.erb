@@ -14,7 +14,7 @@
     </li>
     <% end %>
 
-    <% if @task.complete %>
+    <% if @task.completion_date %>
     <li>
       <strong>Completed On:</strong> <%= "#{@task.completion_date.month}/#{@task.completion_date.day}" %>
     </li>
@@ -22,6 +22,10 @@
     <li>
       <strong><%= (Date.today - @task.due_date).to_i %> days overdue!</strong>
     </li>
+    <% else %>
+      <li>
+        <strong>Incomplete</strong>
+      </li>
     <% end %>
 
 

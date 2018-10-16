@@ -2,6 +2,7 @@ class TasksController < ApplicationController
 
 def index
   @tasks = Task.all
+
 end
 
 def new
@@ -19,7 +20,6 @@ end
 
 def show
   task_id = params[:id]
-
   @task = Task.find(task_id)
 end
 
@@ -43,26 +43,26 @@ def destroy
   redirect_to tasks_path
 end
 
-def complete
-  task = Task.find(params[:id])
-
-  if task.complete
-    task.complete = false
-    task.completion_date = nil
-  else
-    task.complete = true
-    task.completion_date = Date.today
+def mark_complete
+  @task = Task.find_by(id: params[:id].to_i)
+  @task.completion_date = Date.today
+  if @task.save
+     redirect_to root_path
   end
+end
 
-  if task.save
-    redirect_to tasks_path
+def undo_mark_complete
+  @task = Task.find_by(id: params[:id].to_i)
+  @task.completion_date = nil
+  if @task.save
+    redirect_to root_path
   end
 end
 
 def overdue
   @overdue = Task.all.select do |task|
     task.due_date && Date.today > task.due_date
-  end
+end
 
 end
 

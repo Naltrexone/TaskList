@@ -8,11 +8,11 @@
     <li class="<%= task.complete ? 'complete' : 'incomplete' %>">
       <h4><%= link_to("#{task.name}", task_path(task))%></h4>
 
-      <% if task.complete %>
-      <%= link_to("Mark as INCOMPLETE", complete_task_path(task), method: :patch)%>
-      <% else %>
-      <%= link_to("Mark as COMPLETE", complete_task_path(task), method: :patch)%>
-      <% end %>
+          <% if !task.completion_date %>
+            <%= link_to 'Mark Complete', mark_complete_path(task.id), method: :patch %>
+          <% else %>
+            <%= link_to 'Incomplete', undo_mark_complete_path(task.id), method: :patch %>
+          <% end %>
 
       <%= link_to("Edit", edit_task_path(task)) %>
       <%= link_to("Delete", task_path(task), method: :delete, data: { confirm: "Are you sure you want to delete this item from your to-do list?"}) %>
