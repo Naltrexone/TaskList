@@ -9,9 +9,9 @@
       <h4><%= link_to("#{task.name}", task_path(task))%></h4>
 
           <% if !task.completion_date %>
-            <%= link_to 'Mark Complete', mark_complete_path(task.id), method: :patch %>
+            <%= link_to 'Complete', mark_complete_path(task.id), method: :patch %>
           <% else %>
-            <%= link_to 'Incomplete', undo_mark_complete_path(task.id), method: :patch %>
+            <%= link_to 'Undo complete', undo_mark_complete_path(task.id), method: :patch %>
           <% end %>
 
       <%= link_to("Edit", edit_task_path(task)) %>
